@@ -23,7 +23,10 @@ public class CurrencyService {
         while (scanner.hasNext()){
             result.append(scanner.nextLine());
         }
+        result.deleteCharAt(0);
+        result.deleteCharAt(result.length()-1);
         JSONObject object = new JSONObject(result.toString());
+
 
 //        String json = IOUtils.toString(new URL("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode="
 //                + message + "&json"), StandardCharsets.UTF_8);
