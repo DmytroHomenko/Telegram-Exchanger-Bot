@@ -38,9 +38,9 @@ public class CurrencyService {
         model.setCur_Abbreviation(object.getString("cc"));
         model.setDate(new SimpleDateFormat("dd.MM.yyyy").parse(object.getString("exchangedate")));
 
-        return "Official rate of UAH to " + model.getCur_Abbreviation() + "\n" +
-                "on the date: " + getFormatDate(model) + "\n" +
-                "is: " + model.getCur_OfficialRate() + " " + model.getCur_Abbreviation();
+        return "Офіційний курс з UAH на " + model.getCur_Abbreviation() + "\n" +
+                "на дату: " + getFormatDate(model) + "\n" +
+                "Складає: " + model.getCur_OfficialRate() + " " + model.getCur_Abbreviation();
     }
 
     private static String getFormatDate(CurrencyModel model) {

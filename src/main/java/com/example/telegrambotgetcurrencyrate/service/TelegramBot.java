@@ -37,7 +37,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             long chatId = update.getMessage().getChatId();
 
             switch (messageText){
-                case "/start":
+                case "/Почати":
                     startCommandReceived(chatId, update.getMessage().getChat().getFirstName());
                     break;
                 default:
@@ -45,12 +45,13 @@ public class TelegramBot extends TelegramLongPollingBot {
                         currency = CurrencyService.getCurrencyRate(messageText, currencyModel);
 
                     } catch (IOException e) {
-                        sendMessage(chatId, "We have not found such a currency." + "\n" +
-                                "Enter the currency whose official exchange rate" + "\n" +
-                                "you want to know in relation to UAH." + "\n" +
-                                "For example: USD");
+                        sendMessage(chatId, "Ми не знайшли такої валюти, спробуйте ще раз :(." + "\n" +
+                                "Введіть офіційну валюту" + "\n" +
+                                "яку валюту ви хочете конвертувати в UAH." + "\n" +
+                                "Наприклад: USD");
+
                     } catch (ParseException e) {
-                        throw new RuntimeException("Unable to parse date");
+                        throw new RuntimeException("Не можна зв'язатись з нац банком");
                     }
                     sendMessage(chatId, currency);
             }
@@ -59,10 +60,10 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     private void startCommandReceived(Long chatId, String name) {
-        String answer = "Hi, " + name + ", nice to meet you!" + "\n" +
-                "Enter the currency whose official exchange rate" + "\n" +
-                "you want to know in relation to UAH." + "\n" +
-                "For example: USD";
+        String answer = "Здраствуйте, " + name + ", раді вас бачити!" + "\n" +
+                "Введіть офіційну валюту" + "\n" +
+                "яку ви хочете конвертувати в UAH." + "\n" +
+                "Наприклад: USD";
         sendMessage(chatId, answer);
     }
 
